@@ -1,0 +1,28 @@
+<p>
+  product works!
+</p>
+<div>
+    <table>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>image</th>
+          <th>quantity</th>
+          <th>edit</th>
+        </tr>
+         
+     <tr *ngFor="let product of arr">
+   
+    
+      <td>{{product.productname}}</td>
+       <td>{{product.price}}</td>
+        <td><img src="{{product.imagePath}}" alt="Girl in a jacket"></td>
+        <td>{{product.units}}</td>
+        <td><button (click)="add(product)">add to Cart</button> 
+          <!-- <button (click)="buy(product.productname)">delete</button>-->
+        </td>
+      </tr>  
+
+
+  </table>
+</div>

@@ -1,0 +1,54 @@
+<p *ngIf="empty">{{empty}}</p>
+<div>
+
+    <table *ngIf="cart">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+     
+          <th>quantity</th>
+          <th>Total Price</th>
+        </tr>
+         
+     <tr *ngFor="let product of arr">
+   
+    
+      <td>{{product.productname}}</td>
+       <td>
+          {{product.price}}
+        
+        </td>
+        <td>
+            <div>
+                <img src="{{product.imagePath}}" alt="{{product.productname}}">
+             </div>
+        </td>
+     
+        <td>
+            <button class="btn btn-default" (click)="onDecrement(product._id)">
+                <i class="material-icons">(-)</i>
+              </button></td>
+
+           <td>{{product.units}}</td> 
+           <td>
+            <button class="btn btn-default" (click)="onIncrement(product._id)">
+                <i class="material-icons">(+)</i>
+              </button>
+
+        </td>
+      </tr>  
+      
+
+
+  </table>
+  <div *ngIf="cart">
+      <table align="right">
+          <tr>
+            <th>Total Items</th>
+            <th>Total Price</th>
+          </tr>
+          <tr>{{cart.totalQuantity}}<td></td>{{cart.totalPrice}}</tr>
+      </table>
+  </div>
+
+</div>

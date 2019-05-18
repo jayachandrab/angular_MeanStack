@@ -1,0 +1,75 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h3>Angular 6 Template-Driven Form Validation</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="ProductName">Product name</label>
+                        <input type="text" class="form-control" name="productname" [(ngModel)]="productModel.productname" #productname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && productname.invalid }" required />
+                        <div *ngIf="f.submitted && productname.invalid" class="invalid-feedback">
+                            <div *ngIf="productname.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCode">Product code</label>
+                        <input type="text" class="form-control" name="productCode" [(ngModel)]="productModel.productCode" #productCode="ngModel" [ngClass]="{ 'is-invalid': f.submitted && productCode.invalid }" required />
+                        <div *ngIf="f.submitted && productCode.invalid" class="invalid-feedback">
+                            <div *ngIf="productCode.errors.required">Product code is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" class="form-control" name="price" [(ngModel)]="productModel.price" #price="ngModel" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" required />
+                        <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
+                            <div *ngIf="price.errors.required">Product code is required</div>
+                        </div>
+                    </div>
+					
+					   <div class="form-group">
+                        <label for="units">Units</label>
+                        <input type="text" class="form-control" name="units" [(ngModel)]="productModel.units" #units="ngModel" [ngClass]="{ 'is-invalid': f.submitted && units.invalid }" required />
+                        <div *ngIf="f.submitted && units.invalid" class="invalid-feedback">
+                            <div *ngIf="units.errors.required">Product code is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" [(ngModel)]="productModel.description" #description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" required description />
+                        <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+                            <div *ngIf="description.errors.required">description is required</div>
+                            <div *ngIf="description.errors.description">description must be a valid description address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+						 <select class="form-control" id="category" required>
+    <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+  </select>                    
+                    </div>
+					    <div class="form-group">
+                        <button mat-stroked-button (click)="filePicker.click()">pick image</button>
+                        <input type="file" #filePicker (change)="onImagePicked($event)">
+                      </div>
+                      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+                        <img [src]="imagePreview" alt="productModel.productname">
+                      </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits 
+<div class="text-center">
+    <p>
+        <a href="http://jasonwatmore.com/post/2018/05/11/angular-6-template-driven-forms-validation-example" target="_top">Angular 6 - Template-Driven Forms Validation Example</a>
+    </p>
+    <p>
+        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+    </p>
+</div>-->
